@@ -1,8 +1,5 @@
-cabal-version: 1.12
+cabal-version: 2.2
 
--- This file has been generated from package.yaml by hpack version 0.34.4.
---
--- see: https://github.com/sol/hpack
 
 name:           brinjalhs
 version:        0.1.0.0
@@ -12,7 +9,7 @@ bug-reports:    https://github.com/puggeraponanna/brinjalhs/issues
 author:         Ponanna
 maintainer:     pponanna@pm.me
 copyright:      2021 Ponanna
-license:        BSD3
+license:        BSD-3-Clause
 license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
@@ -23,18 +20,46 @@ source-repository head
   type: git
   location: https://github.com/puggeraponanna/brinjalhs
 
+common common-extensions
+  default-extensions:
+    RecordWildCards
+    , DataKinds
+    , DerivingStrategies
+    , TypeOperators
+    , DeriveGeneric
+
 library
+  import: common-extensions
   exposed-modules:
-      Lib
+      BrinjalHs.App
+      BrinjalHs.Product.HealthCheck.Up
+      BrinjalHs.Server.Endpoints.Up
+      BrinjalHs.Server.Server
+      BrinjalHs.Types.Common.Env
+      BrinjalHs.Types.Communication.Up
+      BrinjalHs.Generics.Infrastructure
   other-modules:
       Paths_brinjalhs
   hs-source-dirs:
       src
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
+    , mtl
+    , servant
+    , servant-client
+    , servant-server
+    , text
+    , time
+    , transformers
+    , wai
+    , wai-extra
+    , warp
   default-language: Haskell2010
+   
 
 executable brinjalhs-exe
+  import: common-extensions
   main-is: Main.hs
   other-modules:
       Paths_brinjalhs
@@ -42,11 +67,23 @@ executable brinjalhs-exe
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , brinjalhs
+    , mtl
+    , servant
+    , servant-client
+    , servant-server
+    , text
+    , time
+    , transformers
+    , wai
+    , wai-extra
+    , warp
   default-language: Haskell2010
 
 test-suite brinjalhs-test
+  import: common-extensions
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
@@ -55,6 +92,17 @@ test-suite brinjalhs-test
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , brinjalhs
+    , mtl
+    , servant
+    , servant-client
+    , servant-server
+    , text
+    , time
+    , transformers
+    , wai
+    , wai-extra
+    , warp
   default-language: Haskell2010
