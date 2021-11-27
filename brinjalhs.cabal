@@ -27,6 +27,21 @@ common common-extensions
     , DerivingStrategies
     , TypeOperators
     , DeriveGeneric
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , mtl
+    , servant
+    , servant-client
+    , servant-server
+    , text
+    , time
+    , transformers
+    , wai
+    , wai-extra
+    , warp
+  default-language: Haskell2010
+  ghc-options: -Werror
 
 library
   import: common-extensions
@@ -38,71 +53,21 @@ library
       BrinjalHs.Types.Common.Env
       BrinjalHs.Types.Communication.Up
       BrinjalHs.Generics.Infrastructure
-  other-modules:
-      Paths_brinjalhs
   hs-source-dirs:
       src
-  build-depends:
-      aeson
-    , base >=4.7 && <5
-    , mtl
-    , servant
-    , servant-client
-    , servant-server
-    , text
-    , time
-    , transformers
-    , wai
-    , wai-extra
-    , warp
-  default-language: Haskell2010
-   
 
-executable brinjalhs-exe
+executable brinjalhs
   import: common-extensions
   main-is: Main.hs
-  other-modules:
-      Paths_brinjalhs
   hs-source-dirs:
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      aeson
-    , base >=4.7 && <5
-    , brinjalhs
-    , mtl
-    , servant
-    , servant-client
-    , servant-server
-    , text
-    , time
-    , transformers
-    , wai
-    , wai-extra
-    , warp
-  default-language: Haskell2010
+    brinjalhs
 
 test-suite brinjalhs-test
   import: common-extensions
   type: exitcode-stdio-1.0
   main-is: Spec.hs
-  other-modules:
-      Paths_brinjalhs
   hs-source-dirs:
       test
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
-  build-depends:
-      aeson
-    , base >=4.7 && <5
-    , brinjalhs
-    , mtl
-    , servant
-    , servant-client
-    , servant-server
-    , text
-    , time
-    , transformers
-    , wai
-    , wai-extra
-    , warp
-  default-language: Haskell2010
