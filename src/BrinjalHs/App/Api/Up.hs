@@ -1,9 +1,7 @@
-{-# LANGUAGE OverloadedStrings #-}
+module BrinjalHs.App.Api.Up where
 
-module BrinjalHs.Server.Endpoints.Up where
-
+import qualified BrinjalHs.BL.HealthCheck.Up as Up
 import BrinjalHs.Generics.Infrastructure (withModelRunner)
-import qualified BrinjalHs.Product.HealthCheck.Up as Up
 import BrinjalHs.Types.Common.Env
 import BrinjalHs.Types.Communication.Up (UpResponse)
 import Control.Monad.Reader.Class

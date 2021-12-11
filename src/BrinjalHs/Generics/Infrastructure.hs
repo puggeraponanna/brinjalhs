@@ -21,5 +21,6 @@ newtype Model a = Model
     ( Functor,
       Applicative,
       Monad,
-      MonadReader Env
+      MonadReader Env,
+      MonadIO
     )

@@ -27,9 +27,11 @@ common common-extensions
     , DerivingStrategies
     , TypeOperators
     , DeriveGeneric
+    , OverloadedStrings
+    , ConstraintKinds
   build-depends:
       aeson
-    , base >=4.7 && <5
+    , base ^>=4.14.3.0
     , mtl
     , servant
     , servant-client
@@ -40,6 +42,8 @@ common common-extensions
     , wai
     , wai-extra
     , warp
+    , fast-logger
+    , pretty-terminal
   default-language: Haskell2010
   ghc-options: -Werror
 
@@ -47,12 +51,14 @@ library
   import: common-extensions
   exposed-modules:
       BrinjalHs.App
-      BrinjalHs.Product.HealthCheck.Up
-      BrinjalHs.Server.Endpoints.Up
-      BrinjalHs.Server.Server
+      BrinjalHs.BL.HealthCheck.Up
+      BrinjalHs.App.Api.Up
+      BrinjalHs.App.Api
       BrinjalHs.Types.Common.Env
       BrinjalHs.Types.Communication.Up
       BrinjalHs.Generics.Infrastructure
+      BrinjalHs.Generics.Logger
+      BrinjalHs.Generics.Types 
   hs-source-dirs:
       src
 

@@ -1,6 +1,6 @@
 module BrinjalHs.App where
 
-import BrinjalHs.Server.Server
+import BrinjalHs.App.Api
 import qualified BrinjalHs.Types.Common.Env as Env
 import Network.Wai.Handler.Warp
 import qualified Network.Wai.Middleware.RequestLogger as RequestLogger

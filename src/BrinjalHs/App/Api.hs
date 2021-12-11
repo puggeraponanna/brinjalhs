@@ -1,6 +1,6 @@
-module BrinjalHs.Server.Server where
+module BrinjalHs.App.Api where
 
-import qualified BrinjalHs.Server.Endpoints.Up as Up
+import qualified BrinjalHs.App.Api.Up as Up
 import BrinjalHs.Types.Common.Env (AppServer, Env)
 import Control.Monad.Except
 import Control.Monad.Reader
@@ -11,12 +11,9 @@ type Api = Up.UpApi
 api :: Proxy Api
 api = Proxy
 
-server' :: AppServer Api
-server' = Up.upServer
-
 server :: Env -> Server Api
 server env =
-  hoistServer api (f env) server'
+  hoistServer api (f env) Up.upServer
   where
     f :: Env -> ReaderT Env (ExceptT ServerError IO) a -> Handler a
     f env' r = do
